@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Blood Request Detail{% endblock %}
+{% block content %}
+<h1>Blood Request Detail</h1>
+<table class="table">
+    <tr>
+        <th>User</th>
+        <td>{{ blood_request.user.username }}</td>
+    </tr>
+    <tr>
+        <th>Blood Type</th>
+        <td>{{ blood_request.blood_type }}</td>
+    </tr>
+    <tr>
+        <th>Request Type</th>
+        <td>{{ blood_request.get_request_type_display }}</td>
+    </tr>
+    <tr>
+        <th>Region</th>
+        <td>{{ blood_request.region }}</td>
+    </tr>
+    <tr>
+        <th>Province</th>
+        <td>{{ blood_request.province }}</td>
+    </tr>
+    <tr>
+        <th>Municipality</th>
+        <td>{{ blood_request.municipality }}</td>
+    </tr>
+</table>
+<a href="{% url 'blood_request_list' %}" class="btn btn-primary">Back to List</a>
+{% if blood_request.user == user %}
+<a href="{% url 'blood_request_update' blood_request.id %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'blood_request_delete' blood_request.id %}" class="btn btn-danger">Delete</a>
+{% endif %}
+{% endblock %}

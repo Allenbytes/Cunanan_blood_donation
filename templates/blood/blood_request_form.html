@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Create/Update Blood Request{% endblock %}
+{% block content %}
+<h1>{% if form.instance.pk %}Update{% else %}Create{% endif %} Blood Request</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'blood_request_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
